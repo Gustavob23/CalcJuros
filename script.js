@@ -14,11 +14,15 @@ document.getElementById("calculate").addEventListener("click", function() {
     diffDays++;
 
     if (currentDate.getDate() === 31) {
-      diffDays += daysInBaseMonth - 1; // Calculate juros for 30 days
-    } else if (currentDate.getDate() === 28) {
-      diffDays -= 2; // Subtract 2 days for February
-    } else if (currentDate.getDate() === 29) {
-      diffDays--; // Subtract 1 day for February
+      const monthlyInterest = (principal * rate * daysInBaseMonth) / (daysInYear * 100);
+      const dailyInterest = monthlyInterest / daysInBaseMonth;
+      const extraDayInterest = dailyInterest * (31 - daysInBaseMonth);
+      diffDays += extraDayInterest;
+    } else if (currentDate.getDate() === 28 || currentDate.getDate() === 29) {
+      const monthlyInterest = (principal * rate * daysInBaseMonth) / (daysInYear * 100);
+      const dailyInterest = monthlyInterest / daysInBaseMonth;
+      const missingDaysInterest = dailyInterest * (daysInBaseMonth - currentDate.getDate());
+      diffDays -= missingDaysInterest;
     }
 
     currentDate.setDate(currentDate.getDate() + 1);
@@ -31,6 +35,6 @@ document.getElementById("calculate").addEventListener("click", function() {
   document.getElementById("result").innerHTML = `
     Juros Totais: R$ ${totalInterest.toFixed(2)}<br>
     Valor Total: R$ ${totalAmount.toFixed(2)}<br>
-    Quantidade de Dias: ${diffDays}
+    Quantidade de Dias: ${diffDays.toFixed(2)}
   `;
 });
