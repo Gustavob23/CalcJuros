@@ -4,14 +4,16 @@ document.getElementById("calculate").addEventListener("click", function() {
   const startDate = new Date(document.getElementById("startDate").value);
   const endDate = new Date(document.getElementById("endDate").value);
 
+  let currentDate = new Date(startDate);
   let diffDays = 0;
 
-  const currentDate = new Date(startDate);
   while (currentDate <= endDate) {
     diffDays++;
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    currentDate.setDate(1);
-    currentDate.setDate(31);
+    currentDate.setDate(currentDate.getDate() + 1);
+    if (currentDate.getDate() === 31) {
+      currentDate.setMonth(currentDate.getMonth() + 1);
+      currentDate.setDate(1);
+    }
   }
 
   const totalInterest = (principal * rate * diffDays) / (30 * 100);
@@ -22,10 +24,5 @@ document.getElementById("calculate").addEventListener("click", function() {
     Juros Totais: R$ ${totalInterest.toFixed(2)}<br>
     Valor Total: R$ ${totalAmount.toFixed(2)}
   `;
-
-  // Limpar os campos de entrada
-  document.getElementById("principal").value = "";
-  document.getElementById("rate").value = "";
-  document.getElementById("startDate").value = "";
-  document.getElementById("endDate").value = "";
 });
+
