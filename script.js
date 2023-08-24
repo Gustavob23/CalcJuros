@@ -30,6 +30,7 @@ document.getElementById("calculate").addEventListener("click", function() {
   // Exibir os resultados
   document.getElementById("result").innerHTML = `
     Juros Totais: R$ ${totalInterest.toFixed(2)}<br>
-    Valor Total: R$ ${totalAmount.toFixed(2)}
+    Valor Total: R$ ${totalAmount.toFixed(2)}<br>
+    Quantidade de Dias: ${diffDays}
   `;
 });
