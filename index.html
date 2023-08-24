@@ -7,26 +7,26 @@
   <title>Calculadora de Juros</title>
 </head>
 <body>
-  <div class="header">
-    <h1>Calculadora de Juros</h1>
-  </div>
-  <div class="calculator">
-    <label for="principal">Valor Principal:</label>
-    <input type="number" id="principal" step="0.01" required>
+  <div class="container">
+    <h1 class="header">Calculadora de Juros</h1>
+    <div class="calculator">
+      <label for="principal">Valor Principal:</label>
+      <input type="number" id="principal" step="0.01" required>
 
-    <label for="rate">Taxa de Juros (em %):</label>
-    <input type="number" id="rate" step="0.01" required>
+      <label for="rate">Taxa de Juros (em %):</label>
+      <input type="number" id="rate" step="0.01" required>
 
-    <label for="startDate">Data Inicial:</label>
-    <input type="date" id="startDate" required>
+      <label for="startDate">Data Inicial:</label>
+      <input type="date" id="startDate" required>
 
-    <label for="endDate">Data Final:</label>
-    <input type="date" id="endDate" required>
+      <label for="endDate">Data Final:</label>
+      <input type="date" id="endDate" required>
 
-    <button id="calculate">Calcular</button>
+      <button id="calculate">Calcular</button>
 
-    <h2>Resultado:</h2>
-    <p id="result"></p>
+      <h2>Resultado:</h2>
+      <p id="result"></p>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
