@@ -1,28 +1,24 @@
 document.getElementById("calculate").addEventListener("click", function() {
   const principal = parseFloat(document.getElementById("principal").value);
-  const rate = parseFloat(document.getElementById("rate").value) / 100;
+  const ratePercentage = parseFloat(document.getElementById("rate").value);
   const startDate = new Date(document.getElementById("startDate").value);
   const endDate = new Date(document.getElementById("endDate").value);
 
   const daysInBaseMonth = 30;
-  const daysInYear = 365;
 
-  let diffDays = 0;
-  let currentDate = new Date(startDate);
+  // Calcular juros em reais
+  const interestInReal = (principal * ratePercentage) / 100;
 
-  while (currentDate <= endDate) {
-    diffDays++;
+  // Calcular juros diários
+  const dailyInterest = interestInReal / daysInBaseMonth;
 
-    if (currentDate.getDate() === 31) {
-      diffDays += daysInBaseMonth - 1;
-    } else if (currentDate.getDate() === 28 || currentDate.getDate() === 29) {
-      diffDays -= daysInBaseMonth - currentDate.getDate();
-    }
+  // Calcular quantidade de dias
+  const timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+  const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
+  // Calcular juros totais
+  const totalInterest = dailyInterest * diffDays;
 
-  const totalInterest = (principal * rate * diffDays) / daysInYear;
   const totalAmount = principal + totalInterest;
 
   // Exibir os resultados
