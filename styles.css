@@ -32,7 +32,7 @@ body {
 .calculator button {
   display: block;
   margin: 10px auto;
-  width: 100%;
+  width: 80%; /* Ajustado para ocupar 80% da largura */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -52,4 +52,13 @@ body {
 }
 
 .calculator h2 {
-  margin-top: 20
+  margin-top: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+#result {
+  font-size: 20px;
+  font-weight: bold;
+  color: #007bff;
+}
