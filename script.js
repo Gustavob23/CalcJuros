@@ -14,7 +14,7 @@ document.getElementById("calculate").addEventListener("click", function() {
 
   // Calcular quantidade de dias
   const timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
-  const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+  const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
 
   // Calcular juros totais
   const totalInterest = dailyInterest * diffDays;
