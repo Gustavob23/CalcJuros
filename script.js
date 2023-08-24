@@ -10,24 +10,10 @@ document.getElementById("calculate").addEventListener("click", function() {
   while (currentDate <= endDate) {
     diffDays++;
     currentDate.setDate(currentDate.getDate() + 1);
-    
-    if (currentDate.getDate() === 31 && currentDate.getMonth() === 0) {
+
+    if (currentDate.getDate() === 31 || (currentDate.getMonth() === 1 && currentDate.getDate() === 29)) {
       currentDate.setMonth(currentDate.getMonth() + 1);
-    }
-    if (currentDate.getDate() === 31 && currentDate.getMonth() === 2) {
-      currentDate.setMonth(currentDate.getMonth() + 1);
-    }
-    if (currentDate.getDate() === 31 && currentDate.getMonth() === 4) {
-      currentDate.setMonth(currentDate.getMonth() + 1);
-    }
-    if (currentDate.getDate() === 31 && currentDate.getMonth() === 6) {
-      currentDate.setMonth(currentDate.getMonth() + 1);
-    }
-    if (currentDate.getDate() === 31 && currentDate.getMonth() === 7) {
-      currentDate.setMonth(currentDate.getMonth() + 1);
-    }
-    if (currentDate.getDate() === 31 && currentDate.getMonth() === 9) {
-      currentDate.setMonth(currentDate.getMonth() + 1);
+      currentDate.setDate(1);
     }
   }
 
